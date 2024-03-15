@@ -8,10 +8,7 @@ import morgan from "morgan";
 import kpiRoutes from "./routes/kpi.js";
 import productRoutes from "./routes/product.js";
 import transactionRoutes from "./routes/transaction.js";
-import KPI from "./models/KPI.js";
-import Product from "./models/Product.js";
-import Transaction from "./models/Transaction.js";
-import { kpis, products, transactions } from "./data/data.js";
+
 
 /* CONFIGURATIONS */
 dotenv.config();
@@ -32,7 +29,7 @@ app.use("/transaction", transactionRoutes);
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 1337;
 mongoose
-  .connect(process.env.MONGO_URL, {
+  .connect("mongodb://localhost:27017/pidatabase", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
